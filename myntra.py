@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 import keras
 from keras.models import load_model
 import numpy as np
@@ -54,10 +54,8 @@ def get_label(target):
 
 @app.route("/")
 @app.route("/home")
-def home():
-    ## design trendy clothes
-    ## check your trend score   
-    return "home"
+def home(): 
+    return render_template('./index.html')
 
 
 

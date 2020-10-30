@@ -1,0 +1,66 @@
+.background{
+    background-image: url("../assets/images/lauren-fleischmann-R2aodqJn3b8-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 0;
+}
+.container{
+    max-width: 1100px;
+    margin: auto;
+    margin-top: 30px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+.inner-container{
+    max-width: 400px;
+    margin: 42px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 25px;
+}
+.heading{
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+}
+.name{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: left;
+    color: black;
+}
+.category{
+    font-size : 28px;
+    font-weight: 400;
+    text-align: left;
+    color: black;
+}
+.description{
+    color: rgba(0,0,0,0.8);
+    text-align : left;
+    padding: 10px 0;
+}
+.button{
+    padding: 7px 29px;
+    border-color: #6c5cff;
+    border-radius: 5px;
+    border-width: 1px;
+    outline: none;
+    background-color: inherit;
+    color:  #6c5cff;
+    margin: auto;    
+    margin-top: 10px;
+}
+.button:hover{
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color:  #6c5cff
+}
