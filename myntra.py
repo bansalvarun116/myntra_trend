@@ -61,21 +61,15 @@ def home():
     image_file3 = url_for('static', filename="images/tab3.png")
     return render_template('index.html', image_file=image_file, image_file1=image_file1, image_file2=image_file2, image_file3=image_file3)
 
-@app.route("/design_trendy_clothes")
-def design_trendy_clothes():
-    ## fmist dataset
-    ##attribute dataset
-    return "design_trendy_clothes"
-
     
-@app.route("/design_trendy_clothes/fmnist")
+@app.route("/fmnist")
 def fmnist():
     ##### list of 0 to 9 #################
     temp=0
     return generate_images.generate_fake_samples(mgen,100,temp,28)
 
 
-@app.route("/design_trendy_clothes/attribute_dataset")
+@app.route("/attribute_dataset")
 def attribute_dataset():
     collar=0
     gender=0
