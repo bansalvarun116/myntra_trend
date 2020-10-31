@@ -65,8 +65,9 @@ def home():
 @app.route("/fmnist")
 def fmnist():
     ##### list of 0 to 9 #################
+    image_file4 = url_for('static', filename="images/plot.png")
     temp=0
-    return generate_images.generate_fake_samples(mgen,100,temp,28)
+    return generate_images.generate_fake_samples(mgen,100,temp,28), render_template('fmnist.html', image_file4=image_file4)
 
 
 @app.route("/attribute_dataset")
