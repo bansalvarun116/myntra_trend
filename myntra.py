@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 import keras
 from keras.models import load_model
 import numpy as np
@@ -55,7 +55,11 @@ def get_label(target):
 @app.route("/")
 @app.route("/home")
 def home(): 
-    return render_template('./index.html')
+    image_file = url_for('static', filename="images/display.svg")
+    image_file1 = url_for('static', filename="images/tab1.png")
+    image_file2 = url_for('static', filename="images/tab2.png")
+    image_file3 = url_for('static', filename="images/tab3.png")
+    return render_template('index.html', image_file=image_file, image_file1=image_file1, image_file2=image_file2, image_file3=image_file3)
 
 
 
