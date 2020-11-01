@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField, FileAllowed
 from wtforms import SelectField, SubmitField
 from wtforms.validators import DataRequired
 
@@ -19,7 +20,7 @@ class AttributeForm(FlaskForm):
     )
     gender = SelectField(
         'Gender',
-        choices=[('Male', 'Male'), ('Female', 'Female')],
+        choices=[('0', 'Male'), ('1', 'Female')],
         validators=[DataRequired()]
     )
     necktie = SelectField(
@@ -29,7 +30,7 @@ class AttributeForm(FlaskForm):
     )
     pattern = SelectField(
         'Pattern',
-        choices=[('Floral', 'Floral'), ('Graphic', 'Graphic'), ('Plaid', 'Plaid'), ('Solid', 'Solid'), ('Spot', 'Spot'), ('Stripe', 'Stripe')],
+        choices=[('0', 'Floral'), ('1', 'Graphic'), ('2', 'Plaid'), ('3', 'Solid'), ('4', 'Spot'), ('5', 'Stripe')],
         validators=[DataRequired()]
     )
     placket = SelectField(
@@ -62,4 +63,8 @@ class AttributeForm(FlaskForm):
         choices=[('0', '1'), ('1', '2'), ('2', '3')],
         validators=[DataRequired()]
     )
+    submit = SubmitField('Submit')
+
+class TrendyForm(FlaskForm):
+    img = FileField('Add your image here', [FileAllowed(['jpg','png','svg'])])
     submit = SubmitField('Submit')

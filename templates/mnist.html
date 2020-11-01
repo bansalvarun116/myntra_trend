@@ -27,10 +27,10 @@
             <div id="tab-container">
                 <form method="POST" action="">
                     {{form.csrf_token}}
-                    <legend class="form-heading acenter">
+                    <legend class="form-heading acenter" style="margin-bottom: 20px;">
                         Set the Values here!
                     </legend>
-                    <fieldset class="group">
+                    <fieldset class="group" style="margin-bottom: 20px;">
                         <div class="form-group row" style="margin:0">
                             {{form.temp.label(class="")}}
                             {{form.temp(class="form-control")}}

@@ -1,4 +1,6 @@
 ######### trendy score ############
+import numpy as np
+
 def pre(img):
     dim0=299
     dim1=240
