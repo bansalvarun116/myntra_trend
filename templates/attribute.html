@@ -1,35 +1,89 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Attribute DataSet!</title>
-        <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='fmnist.css') }}" />
+        <title>Myntra Trends App</title>
+        <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='design.css') }}" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
     </head>
     <body>
         <div class="background">
             <header>
-                <h1 class="h1 heading">Clothing Generation through Attribute DataSet</h1>
+                <h1 class="h1 heading">Clothing Generation through Clothing Parts Attributes</h1>
             </header>
             <div class="container">
-                <form method="POST">
-                    {{form.csrf_token}}
-                    {{form.collar}}
-                    {{form.gender}}
-                    {{form.necktie}}
-                    {{form.pattern}}
-                    {{form.placket}}
-                    {{form.scarf}}
-                    {{form.skinexposure}}
-                    {{form.category}}
-                    {{form.neckline}}
-                    {{form.sleevelength}}
-                    {{form.submit}}
-                </form>
+                <div class="inner-container">
+                    <h1 class="h1 name">Attribute Dataset</h1>
+                    <h6 class="h6 description">Procedure:<br>
+                        In this set, we have different types of clothing and they are having attributes for parts of a cloth such as pattern, collar, etc. So whatever values you provide to every part, it will show you what's trending with all that specifications.
+                        What you have to do is provide values to all the specifications and hence some images related to what you want will be generated. 
+                    </h6>
+                    <a href="#tab-container" class="button">Lets Go!</a>
+                </div>
+                <img src={{image_file6}} alt="illustration" height="400" width="600" style="margin-top: 30px"/>
             </div>
-        </div> 
-        <div class="background1">  
-
+        </div>  
+        <div class="background1">         
+            <div id="tab-container">
+                <form method="POST" action="" style="width: 500px;">
+                    {{form.csrf_token}}                    
+                    <legend class="form-heading acenter">
+                        Set the Values here!
+                    </legend>
+                    <div class="form">                        
+                        <fieldset class="group">
+                            <div class="form-group">
+                                {{form.collar.label(class="")}}
+                                {{form.collar(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.gender.label(class="")}}
+                                {{form.gender(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.necktie.label(class="")}}
+                                {{form.necktie(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.pattern.label(class="")}}
+                                {{form.pattern(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.placket.label(class="")}}
+                                {{form.placket(class="form-control")}}
+                            </div>
+                        </fieldset>
+                        <fieldset class="group">
+                            <div class="form-group">
+                                {{form.scarf.label(class="")}}
+                                {{form.scarf(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.skinexposure.label(class="")}}
+                                {{form.skinexposure(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.category.label(class="")}}
+                                {{form.category(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.neckline.label(class="")}}
+                                {{form.neckline(class="form-control")}}
+                            </div>
+                            <div class="form-group">
+                                {{form.sleevelength.label(class="")}}
+                                {{form.sleevelength(class="form-control")}}
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="form-group acenter">
+                        {{form.submit(class="btn btn-outline-info")}}
+                    </div>
+                </form>
+                <div class="image-container">
+                    <img src={{image_file7}} alt="" height="300" width="450"/>
+                </div>
+            </div>
         </div>
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

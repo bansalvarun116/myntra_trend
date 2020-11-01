@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import ast
 
 
-
 import generate_images
 import cnn_pre_post
 app=Flask(__name__)
@@ -65,15 +64,16 @@ def home():
     return render_template('index.html', image_file=image_file, image_file1=image_file1, image_file2=image_file2, image_file3=image_file3)
 
     
-@app.route("/fmnist", methods=['GET', 'POST'])
-def fmnist():
+@app.route("/mnist", methods=['GET', 'POST'])
+def mnist():
     temp = 0
     form = MNISTForm()
     if form.validate_on_submit():
         temp = int(form.temp.data)
         return generate_images.generate_fake_samples(mgen,100,temp,28)
-    image_file5 = url_for('static', filename="images/cloth1.jpg")
-    return render_template('fmnist.html', image_file5=image_file5, form=form)
+    image_file4 = url_for('static', filename="images/cloth2.svg")
+    image_file5 = url_for('static', filename="images/cloth1.svg")
+    return render_template('mnist.html', image_file5=image_file5, image_file4=image_file4, form=form)
 
 @app.route("/attribute_dataset", methods=['GET', 'POST'])
 def attribute_dataset():
@@ -131,26 +131,24 @@ def attribute_dataset():
     tempf=tempf+temp3
     tempf=tempf+temp4
 
-
-
     temp=get_label(tempf)
     ##temp=0
     #return generate_images.generate_fake_samples(mgen,100,temp,28), render_template('attribute.html', temp=temp, form=form)
-    return render_template('attribute.html', temp=temp, form=form)
+    image_file6 = url_for('static', filename="images/cloth3.svg")
+    image_file7 = url_for('static', filename="images/cloth4.svg")
+    return render_template('attribute.html', temp=temp, form=form, image_file6=image_file6, image_file7=image_file7)
 
 @app.route("/production")
 def production():
     return render_template('production.html')
 
-
+    
 @app.route("/check_your_trend_score")
 def check_your_trend_score():
     ###img=img
-    ###taking image input 
+    ###taking image input
 
     img=cnn_pre_post.pre(img)
     result=cnn_pre_post.post(cnn,img)
-    
-    return "check_your_trend_score"
-    
-    
+
+    return render_template('trendy.html')
