@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
+from forms import MNISTForm, AttributeForm
 import keras
 from keras.models import load_model
 import numpy as np
@@ -10,6 +11,7 @@ import ast
 import generate_images
 import cnn_pre_post
 app=Flask(__name__)
+app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
 
 #####     loading models      ###########
@@ -62,26 +64,23 @@ def home():
     image_file3 = url_for('static', filename="images/tab3.png")
     return render_template('index.html', image_file=image_file, image_file1=image_file1, image_file2=image_file2, image_file3=image_file3)
 
-@app.route("/design_trendy_clothes")
-def design_trendy_clothes():
-    ## fmist dataset
-    ##attribute dataset
-    return "design_trendy_clothes"
-
     
-@app.route("/design_trendy_clothes/fmnist")
+@app.route("/fmnist", methods=['GET', 'POST'])
 def fmnist():
-    ##### list of 0 to 9 #################
-    temp=0
-    return generate_images.generate_fake_samples(mgen,100,temp,28)
+    temp = 0
+    form = MNISTForm()
+    if form.validate_on_submit():
+        temp = int(form.temp.data)
+        return generate_images.generate_fake_samples(mgen,100,temp,28)
+    image_file5 = url_for('static', filename="images/cloth1.jpg")
+    return render_template('fmnist.html', image_file5=image_file5, form=form)
 
-
-@app.route("/design_trendy_clothes/attribute_dataset")
+@app.route("/attribute_dataset", methods=['GET', 'POST'])
 def attribute_dataset():
     collar=0
-    gender=0
+    gender=''
     necktie=0
-    pattern=0
+    pattern=''
     placket=0
     scarf=0
     skin_exp=0
@@ -89,6 +88,18 @@ def attribute_dataset():
     neckline=0
     slevelength=0
     temp1=[]
+    form = AttributeForm()
+    if form.validate_on_submit():
+        collar = int(form.collar.data)
+        gender = form.gender.data
+        necktie = int(form.necktie.data)
+        pattern = form.pattern.data
+        placket = int(form.placket.data)
+        scarf = int(form.scarf.data)
+        skin_exp = int(form.skinexposure.data)
+        category = int(form.category.data)
+        neckline = int(form.neckline.data)
+        slevelength = int(form.sleevelength.data)
     for i in range(6):
         if i==pattern:
             temp1.append(1)
@@ -124,21 +135,11 @@ def attribute_dataset():
 
     temp=get_label(tempf)
     ##temp=0
-    ##return generate_images.generate_fake_samples(mgen,100,temp,28)
-    ## call something like this 
-    return "attribute_dataset"
+    #return generate_images.generate_fake_samples(mgen,100,temp,28), render_template('attribute.html', temp=temp, form=form)
+    return render_template('attribute.html', temp=temp, form=form)
 
+@app.route("/production")
+def production():
+    return render_template('production.html')
 
-
-    
-@app.route("/check_your_trend_score")
-def check_your_trend_score():
-    ###img=img
-    ###taking image input 
-
-    img=cnn_pre_post.pre(img)
-    result=cnn_pre_post.post(cnn,img)
-    
-    return "check_your_trend_score"
-    
     

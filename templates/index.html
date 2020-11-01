@@ -66,7 +66,7 @@
                             </div>
                         </div> 
                         <div class="col-lg-6">
-                            <a href="/" class="button">Attribute Dataset!</a>
+                            <a href="{{ url_for('attribute_dataset') }}" class="button">Attribute Dataset!</a>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="mnist" role="tabpanel" aria-labelledby="mnist-tab">
@@ -79,7 +79,7 @@
                             </div>
                         </div> 
                         <div class="col-lg-6">
-                            <a href="/" class="button">MNIST Dataset!</a>
+                            <a href="{{ url_for('fmnist') }}" class="button">MNIST Dataset!</a>
                         </div>                              
                     </div>
                     <div class="tab-pane fade" id="trendy" role="tabpanel" aria-labelledby="trendy-tab">
@@ -92,7 +92,7 @@
                             </div>
                         </div> 
                         <div class="col-lg-6">
-                            <a href="/" class="button">Trendy Score</a>
+                            <a href="{{ url_for('check_your_trend_score') }}" class="button">Trendy Score</a>
                         </div>                              
                     </div>
                 </div>

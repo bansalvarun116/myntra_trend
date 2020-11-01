@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 
 def generate_latent_points(latent_dim, n_class,n_samples=50):
@@ -28,7 +29,7 @@ def generate_fake_samples(generator, latent_dim, n_class ,p,n_samples=50):
         for j in range(1,6):
             plt.subplot(10,5,i*5+j)
             plt.imshow(images[i*5+j-1])
-    plt.savefig('./static/images/plot.png')
+    plt.savefig('static/images/plot.png')
     
     ###########return things to be changed#############
     return "images"
