@@ -1,9 +1,13 @@
 ######### trendy score ############
 import numpy as np
+from keras.preprocessing import image
 
 def pre(img):
     dim0=299
     dim1=240
+    img = image.load_img(img)
+
+
     img=np.asarray(img)
     a,b,c=img.shape
     x_start=(a-dim0)//2
