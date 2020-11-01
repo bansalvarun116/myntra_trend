@@ -19,8 +19,8 @@ def pre(img):
     return img
 
 ##### update ongoing trend ###########
-ongoing_trend=[]
-
+ongoing_trend=[1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
+ongoing_trend=np.asarray(ongoing_trend)
 def post(model,img):
     vec=model.predict(img)
     result=np.sum(np.abs(vec-ongoing_trend))/np.sum(ongoing_trend)
