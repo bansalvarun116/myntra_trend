@@ -2,13 +2,14 @@
 import numpy as np
 from keras.preprocessing import image
 
-def pre(img):
+def pre(img1):
     dim0=299
     dim1=240
-    img = image.load_img(img)
+    img = image.load_img(img1)
 
 
     img=np.asarray(img)
+  
     a,b,c=img.shape
     x_start=(a-dim0)//2
     x_end=x_start+dim0
@@ -19,7 +20,6 @@ def pre(img):
         img=img[1:,:,:]
     if img.shape[1]==241:
         img=img[:,1:,:]
-    print(img.shape)
     return img
 
 ##### update ongoing trend ###########
@@ -30,4 +30,4 @@ def post(model,img):
     vec=model.predict(img)
     vec=np.asarray(vec)
     result=np.sum(np.abs(vec-ongoing_trend))/np.sum(ongoing_trend)
-    return result*100
+    return int(result*100)

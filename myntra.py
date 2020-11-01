@@ -153,7 +153,7 @@ def save_picture(form_picture):
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
-    picture_path = 'static/images/' + picture_fn
+    picture_path = os.path.join(app.root_path, 'static/images', picture_fn)
     form_picture.save(picture_path)
     return picture_path
 
@@ -163,7 +163,9 @@ def check_your_trend_score():
     if form.validate_on_submit():
         picture_file = save_picture(form.img.data)
         image = picture_file
-        return render_template('production.html', img=image, score=10)
+        img = cnn_pre_post.pre(image)
+        result = cnn_pre_post.post(cnn,img)
+        return render_template('production.html', img=image, score=result)
     image_file8 = url_for('static', filename="images/score1.png")
     image_file9 = url_for('static', filename="images/score.jpg")
     return render_template('trendy.html', form=form, image_file8=image_file8, image_file9=image_file9)
