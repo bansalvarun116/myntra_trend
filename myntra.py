@@ -142,4 +142,15 @@ def attribute_dataset():
 def production():
     return render_template('production.html')
 
+
+@app.route("/check_your_trend_score")
+def check_your_trend_score():
+    ###img=img
+    ###taking image input 
+
+    img=cnn_pre_post.pre(img)
+    result=cnn_pre_post.post(cnn,img)
+    
+    return "check_your_trend_score"
+    
     
