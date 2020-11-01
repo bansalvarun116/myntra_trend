@@ -155,18 +155,17 @@ def save_picture(form_picture):
     picture_fn = random_hex + f_ext
     picture_path = os.path.join(app.root_path, 'static/images', picture_fn)
     form_picture.save(picture_path)
-    return picture_fn
+    return picture_path
 
-@app.route("/check_your_trend_score")
+@app.route("/check_your_trend_score", methods=['GET', 'POST'])
 def check_your_trend_score():
-    img = ''
     form = TrendyForm()
     if form.validate_on_submit():
-        picture_file = save_picture(form.picture.data)
-        img = picture_file
-        img = cnn_pre_post.pre(img)
-        result = cnn_pre_post.post(cnn,img)
-        return render_template('production.html', img=img, score=result)
+        picture_file = save_picture(form.img.data)
+        image = picture_file
+        img = cnn_pre_post.pre(image)
+        result = cnn_pre_post.post(img)
+        return render_template('production.html', img=image, score=result)
     image_file8 = url_for('static', filename="images/score1.png")
     image_file9 = url_for('static', filename="images/score.jpg")
     return render_template('trendy.html', form=form, image_file8=image_file8, image_file9=image_file9)

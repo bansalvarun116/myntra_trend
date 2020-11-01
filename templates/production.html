@@ -12,8 +12,12 @@
                 <h1 class="h1 heading">Result Produced: </h1>
             </header>
             <div class="container acenter">
-                <img src={{img}} alt="illustration" height="400" width="500" style="margin-top: 30px"/>
-                
+                <img src={{img}} alt="" height="400" width="500" style="margin-top: 30px"/>
+                {% if score > 0 %}
+                    <div class="score-section">
+                        <h3 class="h3 score">{{score}}</h3>
+                    </div>
+                {% endif %}
             </div>
         </div>  
 
