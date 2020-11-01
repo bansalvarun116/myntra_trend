@@ -21,9 +21,9 @@ mgen=load_model("models/mnist_gen.h5")
 mgan=load_model("models/mnist_gan.h5")
 mdis=load_model("models/mnist_dis.h5")
 
-#agen=load_model("models/attribute_gen.h5")
-#agan=load_model("models/attribute_gan.h5")
-#adis=load_model("models/attribute_dis.h5")
+agen=load_model("models/attribute_gen.h5")
+agan=load_model("models/attribute_gan.h5")
+adis=load_model("models/attribute_dis.h5")
 
 cnn=load_model("models/cnn_trend_score.h5")
 
