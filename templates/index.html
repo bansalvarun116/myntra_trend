@@ -43,40 +43,37 @@
                     <div class="tab-pane fade show active" id="cgann" role="tabpanel" aria-labelledby="cgann-tab">
                         <div class="d-flex">
                             <div class="col-lg-6">
-                                <p class="mb_40">If you are planning on customizing your website without getting into any kind of hassle then our multi-skilled and specialized team of experts can do this for you. We variegate your project by incorporating it with user experience, special made plug-ins and cutting edge technologies for the ultimate and unbeatable results. Our dynamic solution helps you to increase your business website’s traffic, improves business sales and enhances ROI.</p>
+                                <p class="mb_10">
+                                    Using CGANN, we are generating trending clothes by taking some attributes for the clothing like different categories of the clothing such as T-Shirts, Shirts, Dresses, Shoes, etc, if you want sleeve or not, how much sleeve length
+                                    you want, how much skin exposure you want, etc. All of this data is taken from the user and then the model helps in generating images of clothing related to your choices, keeping the trends in mind.
+                                </p>
+                                <a href="{{ url_for('attribute_dataset') }}" class="button">Attribute Dataset!</a>
                             </div>
                             <div class="col-lg-4 ml-auto" style="margin-top: -30px;">
                                 <img class="illus" src={{image_file1}} height="250" width="350">
                             </div>
                         </div> 
-                        <div class="col-lg-6">
-                            <a href="{{ url_for('attribute_dataset') }}" class="button">Attribute Dataset!</a>
-                        </div>
                     </div>
                     <div class="tab-pane fade" id="mnist" role="tabpanel" aria-labelledby="mnist-tab">
                         <div class="d-flex">
                             <div class="col-lg-6">
-                                <p class="mb_40">No matter whether a business is small or big flexibility and efficiency are key components to meet the ever-changing customer and market requirement. BPA gives you the ultimate in flexibility because you are able to leverage it to automate any process in any department in your business. From building an automated sales funnel to automating your daily workflow, our analyst is specialized in creating a customized solution for your business.</p>
+                                <p class="mb_10">In this feature, we are generating trending clothes by taking only category of the clothing from you such as T-Shirts, Shirts, Dresses, Shoes, etc, and then the model helps in generating images of clothing related to your choices, keeping the trends in mind. </p>
+                                <a href="{{ url_for('mnist') }}" class="button">MNIST Dataset!</a>
                             </div>
                             <div class="col-lg-4 ml-auto" style="margin-top: -30px;">
                                 <img class="illus" src={{image_file2}} height="250" width="300">
                             </div>
-                        </div> 
-                        <div class="col-lg-6">
-                            <a href="{{ url_for('mnist') }}" class="button">MNIST Dataset!</a>
                         </div>                              
                     </div>
                     <div class="tab-pane fade" id="trendy" role="tabpanel" aria-labelledby="trendy-tab">
                         <div class="d-flex">
                             <div class="col-lg-6">
-                                <p class="mb_40">Offer top-notch shopping experience to your customers with our robust e-commerce solutions. We develop customer-centric online websites with a significant appeal and a simple user-friendly interface that allows you to capitalize on current and future opportunities. We as a team, are consistently engaged in building intuitive e-commerce solutions for both B2b and B2C market segments.</p>
+                                <p class="mb_10">In this feature, we ask you to upload an image of some clothing of yours, and by analysing what you are wearing, how much relevant the clothes are, and how much trendy are they in today's scenario. Keeping those trends in mind, we compare them to your outfit an then We generate a score out of 100 for your dressing and clothing.</p>
+                                <a href="{{ url_for('check_your_trend_score') }}" class="button">Trendy Score</a>
                             </div>
                             <div class="col-lg-4 ml-auto" style="margin-top: -30px;">
                                 <img class="illus" src={{image_file3}} height="250" width="250">
                             </div>
-                        </div> 
-                        <div class="col-lg-6">
-                            <a href="{{ url_for('check_your_trend_score') }}" class="button">Trendy Score</a>
                         </div>                              
                     </div>
                 </div>
