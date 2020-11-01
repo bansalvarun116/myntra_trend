@@ -163,9 +163,7 @@ def check_your_trend_score():
     if form.validate_on_submit():
         picture_file = save_picture(form.img.data)
         image = picture_file
-        img = cnn_pre_post.pre(image)
-        result = cnn_pre_post.post(img)
-        return render_template('production.html', img=image, score=result)
+        return render_template('production.html', img=image, score=10)
     image_file8 = url_for('static', filename="images/score1.png")
     image_file9 = url_for('static', filename="images/score.jpg")
     return render_template('trendy.html', form=form, image_file8=image_file8, image_file9=image_file9)
