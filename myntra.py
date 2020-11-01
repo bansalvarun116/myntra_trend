@@ -8,6 +8,7 @@ import ast
 
 
 import generate_images
+import cnn_pre_post
 app=Flask(__name__)
 
 
@@ -21,7 +22,7 @@ mdis=load_model("models/mnist_dis.h5")
 #agan=load_model("models/attribute_gan.h5")
 #adis=load_model("models/attribute_dis.h5")
 
-#cnn=load_model("models/cnn_trend_score.h5")
+cnn=load_model("models/cnn_trend_score.h5")
 
 
 #####     loading models      ###########
@@ -132,6 +133,12 @@ def attribute_dataset():
     
 @app.route("/check_your_trend_score")
 def check_your_trend_score():
+    ###img=img
+    ###taking image input 
+
+    img=cnn_pre_post.pre(img)
+    result=cnn_pre_post.post(cnn,img)
+    
     return "check_your_trend_score"
     
     
