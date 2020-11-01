@@ -137,7 +137,7 @@ def attribute_dataset():
         tempf=tempf+temp4
 
         temp=get_label(tempf)        
-        generate_images.generate_fake_samples(mgen,100,temp,28)
+        generate_images.generate_fake_samples(agen,100,temp,60)
         img = url_for('static', filename="images/plot.png")
         return render_template('production.html', img=img, score=0)
 
