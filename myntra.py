@@ -66,20 +66,20 @@ def home():
     
 @app.route("/fmnist", methods=['GET', 'POST'])
 def fmnist():
-    temp = 3
+    temp = 0
     form = MNISTForm()
     if form.validate_on_submit():
-        generate_images.generate_fake_samples(mgen,100,temp,28)
-        return redirect(url_for('production'))
+        temp = int(form.temp.data)
+        return generate_images.generate_fake_samples(mgen,100,temp,28)
     image_file5 = url_for('static', filename="images/cloth1.jpg")
     return render_template('fmnist.html', image_file5=image_file5, form=form)
 
 @app.route("/attribute_dataset", methods=['GET', 'POST'])
 def attribute_dataset():
     collar=0
-    gender=0
+    gender=''
     necktie=0
-    pattern=0
+    pattern=''
     placket=0
     scarf=0
     skin_exp=0
@@ -89,16 +89,16 @@ def attribute_dataset():
     temp1=[]
     form = AttributeForm()
     if form.validate_on_submit():
-        collar = form.collar
-        gender = form.gender
-        necktie = form.necktie
-        pattern = form.pattern
-        placket = form.placket
-        scarf = form.scarf
-        skin_exp = form.skinexposure
-        category = form.category
-        neckline = form.neckline
-        slevelength = form.sleevelength
+        collar = int(form.collar.data)
+        gender = form.gender.data
+        necktie = int(form.necktie.data)
+        pattern = form.pattern.data
+        placket = int(form.placket.data)
+        scarf = int(form.scarf.data)
+        skin_exp = int(form.skinexposure.data)
+        category = int(form.category.data)
+        neckline = int(form.neckline.data)
+        slevelength = int(form.sleevelength.data)
     for i in range(6):
         if i==pattern:
             temp1.append(1)
