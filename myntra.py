@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
+from forms import MNISTForm, AttributeForm
 import keras
 from keras.models import load_model
 import numpy as np
@@ -9,6 +10,7 @@ import ast
 
 import generate_images
 app=Flask(__name__)
+app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
 
 #####     loading models      ###########
@@ -62,15 +64,17 @@ def home():
     return render_template('index.html', image_file=image_file, image_file1=image_file1, image_file2=image_file2, image_file3=image_file3)
 
     
-@app.route("/fmnist")
+@app.route("/fmnist", methods=['GET', 'POST'])
 def fmnist():
-    ##### list of 0 to 9 #################
-    image_file4 = url_for('static', filename="images/plot.png")
-    temp=0
-    return generate_images.generate_fake_samples(mgen,100,temp,28), render_template('fmnist.html', image_file4=image_file4)
+    temp = 3
+    form = MNISTForm()
+    if form.validate_on_submit():
+        generate_images.generate_fake_samples(mgen,100,temp,28)
+        return redirect(url_for('production'))
+    image_file5 = url_for('static', filename="images/cloth1.jpg")
+    return render_template('fmnist.html', image_file5=image_file5, form=form)
 
-
-@app.route("/attribute_dataset")
+@app.route("/attribute_dataset", methods=['GET', 'POST'])
 def attribute_dataset():
     collar=0
     gender=0
@@ -83,6 +87,18 @@ def attribute_dataset():
     neckline=0
     slevelength=0
     temp1=[]
+    form = AttributeForm()
+    if form.validate_on_submit():
+        collar = form.collar
+        gender = form.gender
+        necktie = form.necktie
+        pattern = form.pattern
+        placket = form.placket
+        scarf = form.scarf
+        skin_exp = form.skinexposure
+        category = form.category
+        neckline = form.neckline
+        slevelength = form.sleevelength
     for i in range(6):
         if i==pattern:
             temp1.append(1)
@@ -118,15 +134,17 @@ def attribute_dataset():
 
     temp=get_label(tempf)
     ##temp=0
-    ##return generate_images.generate_fake_samples(mgen,100,temp,28)
-    ## call something like this 
-    return "attribute_dataset"
+    #return generate_images.generate_fake_samples(mgen,100,temp,28), render_template('attribute.html', temp=temp, form=form)
+    return render_template('attribute.html', temp=temp, form=form)
 
-
+@app.route("/production")
+def production():
+    return render_template('production.html')
 
     
 @app.route("/check_your_trend_score")
 def check_your_trend_score():
-    return "check_your_trend_score"
+    image_file4 = url_for('static', filename="images/plot.png")
+    return render_template('trendy.html', image_file4 = image_file4)
     
     

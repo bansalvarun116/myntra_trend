@@ -1,13 +1,13 @@
 from flask_wtf import FlaskForm
-from wtforms import SelectField, SubmitField, validators
+from wtforms import SelectField, SubmitField
 from wtforms.validators import DataRequired
 
 
 class MNISTForm(FlaskForm):
     temp = SelectField(
-        'Attribute',
+        'Temp Value',
         choices=[('0', '0'), ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     submit = SubmitField('Submit')
 
@@ -15,52 +15,51 @@ class MNISTForm(FlaskForm):
 class AttributeForm(FlaskForm):
     collar = SelectField(
         'Collar',
-        choices=[('0', 'No'), ('1', 'Yes')],
-        [validators.DataRequired()]
+        choices=[('0', 'No'), ('1', 'Yes')]
     )
     gender = SelectField(
         'Gender',
         choices=[('Male', 'Male'), ('Female', 'Female')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     necktie = SelectField(
         'NeckTie',
         choices=[('0', 'No'), ('1', 'Yes')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     pattern = SelectField(
         'Pattern',
         choices=[('Floral', 'Floral'), ('Graphic', 'Graphic'), ('Plaid', 'Plaid'), ('Solid', 'Solid'), ('Spot', 'Spot'), ('Stripe', 'Stripe')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     placket = SelectField(
         'Placket',
         choices=[('0', 'No'), ('1', 'Yes')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     scarf = SelectField(
         'Scarf',
         choices=[('0', 'No'), ('1', 'Yes')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     skinexposure = SelectField(
         'Skin Exposure',
         choices=[('0', 'No'), ('1', 'Yes')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     category = SelectField(
         'Category',
         choices=[('0', '1'), ('1', '2'), ('2', '3'), ('3', '4'), ('4', '5'), ('5', '6'), ('6', '7'), ('7', '8')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     neckline = SelectField(
         'Neckline',
         choices=[('0', '1'), ('1', '2'), ('2', '3'), ('3', '4')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     sleevelength = SelectField(
         'Sleeve Length',
         choices=[('0', '1'), ('1', '2'), ('2', '3')],
-        [validators.DataRequired()]
+        validators=[DataRequired()]
     )
     submit = SubmitField('Submit')
