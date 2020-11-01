@@ -22,6 +22,8 @@ def pre(img):
 ongoing_trend=[1.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]
 ongoing_trend=np.asarray(ongoing_trend)
 def post(model,img):
+    img=img.reshape((1,299,240,3))
     vec=model.predict(img)
+    vec=np.asarray(vec)
     result=np.sum(np.abs(vec-ongoing_trend))/np.sum(ongoing_trend)
     return result*100
